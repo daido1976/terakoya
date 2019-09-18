@@ -1,3 +1,3 @@
-# yorozuya
+# terakoya
 
 Work in progress.
