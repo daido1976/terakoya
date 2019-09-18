@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Data } from "./fetchData";
 
 const App = () => {
   return (
     <div>
-      <h1>Hello!</h1>
+      <Data />
     </div>
   );
 };
