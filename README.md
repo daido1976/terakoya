@@ -7,6 +7,8 @@ Work in progress.
 ```
 # Only client
 $ yarn start
+# Use Storybook
+$ yarn storybook
 ```
 
 or
