@@ -4,7 +4,7 @@ Work in progress.
 
 ## Development
 
-```
+```sh
 # Only client
 $ yarn start
 
@@ -14,13 +14,13 @@ $ yarn storybook
 
 or
 
-```
+```sh
 # Use firebase emulator
 # See. https://firebase.google.com/docs/functions/local-emulator
 $ cd functions
 $ npm run build
-$ cd ..
 
+$ cd ..
 # Emulate functions & hosting
 $ firebase emulators:start
 ```
@@ -29,18 +29,16 @@ $ firebase emulators:start
 
 ### Firebase Hosting
 
-```
+```sh
 $ yarn build
 $ firebase deploy
 ```
 
 ### Cloud Functions
 
-```
+```sh
 $ cd functions
-
 # If you have not installed yet
 $ npm install
-
 $ npm run deploy
 ```
