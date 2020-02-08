@@ -7,6 +7,7 @@ Work in progress.
 ```
 # Only client
 $ yarn start
+
 # Use Storybook
 $ yarn storybook
 ```
@@ -15,10 +16,12 @@ or
 
 ```
 # Use firebase emulator
-# https://firebase.google.com/docs/functions/local-emulator
+# See. https://firebase.google.com/docs/functions/local-emulator
 $ cd functions
 $ npm run build
 $ cd ..
+
+# Emulate functions & hosting
 $ firebase emulators:start
 ```
 
@@ -35,7 +38,9 @@ $ firebase deploy
 
 ```
 $ cd functions
+
 # If you have not installed yet
 $ npm install
+
 $ npm run deploy
 ```
