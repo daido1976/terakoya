@@ -19,7 +19,6 @@ or
 # See. https://firebase.google.com/docs/functions/local-emulator
 $ cd functions
 $ npm run build
-
 $ cd ..
 # Emulate functions & hosting
 $ firebase emulators:start
