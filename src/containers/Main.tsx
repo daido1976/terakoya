@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export const Data = () => {
-  const [data, setData] = useState([]);
+export const Main = () => {
+  const [data, setData] = useState([{ event: { title: "" } }]);
   useEffect(() => {
     axios
       .get("https://api.doorkeeper.jp/events", {
