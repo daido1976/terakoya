@@ -17,10 +17,10 @@ export const ListItem: React.FC<Props> = ({
   return (
     <div>
       <a
+        className={styles.myLink}
         href={eventUrl}
         target="_blank"
         rel="noreferrer noopener"
-        style={{ textDecoration: "none", color: "inherit" }}
       >
         <div className={styles.myCard}>
           <div className={styles.myTime}>{startedAt}</div>

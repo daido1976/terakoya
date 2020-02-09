@@ -1,4 +1,9 @@
 .my {
+  &Link {
+    text-decoration: none;
+    color: inherit;
+  }
+
   &Card {
     font-family: sans-serif;
     margin-top: 15px;
