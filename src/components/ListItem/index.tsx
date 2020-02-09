@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./index.module.scss";
 
-interface Props {
+export type Props = {
   title: string;
   address: string;
   startedAt: string;
   eventUrl: string;
-}
+};
 
 export const ListItem: React.FC<Props> = ({
   title,
