@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 export const Main = () => {
   const [data, setData] = useState([{ event: { title: "" } }]);
   useEffect(() => {
-    axios
-      .get("https://api.doorkeeper.jp/events", {
-        headers: { Authorization: "Bearer MY_TOKEN" }
+    fetch("https://api.doorkeeper.jp/events", {
+      headers: { Authorization: "Bearer MY_TOKEN" }
+    })
+      .then(res => {
+        return res.json();
       })
-      .then(response => {
-        setData(response.data);
+      .then(data => {
+        setData(data);
       });
   }, []);
 
