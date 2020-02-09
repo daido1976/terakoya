@@ -9,8 +9,9 @@ type Props = {
 export const List: React.FC<Props> = ({ data }) => {
   return (
     <div>
-      {data.map(d => (
+      {data.map((d, i) => (
         <ListItem
+          key={i}
           title={d.title}
           address={d.address}
           startedAt={d.startedAt}
