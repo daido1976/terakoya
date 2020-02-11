@@ -15,6 +15,7 @@ $ yarn storybook
 or
 
 ```sh
+$ yarn build
 # Use firebase emulator
 # See. https://firebase.google.com/docs/functions/local-emulator
 $ cd functions
