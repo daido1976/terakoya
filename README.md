@@ -18,6 +18,10 @@ or
 # Use firebase emulator
 # See. https://firebase.google.com/docs/functions/local-emulator
 $ cd functions
+
+# if want you emulate only functions, following command execute tsc & serve
+# $ npm run serve
+
 $ npm run build
 $ cd ..
 # Emulate functions & hosting
