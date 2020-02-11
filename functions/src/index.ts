@@ -41,11 +41,6 @@ const fetchDoorkeeper = async (): Promise<Event[]> => {
   });
 };
 
-export const queryEvents = functions.https.onRequest((request, response) => {
-  fetchConnpass().then(d => {
-    fetchDoorkeeper().then(fd => {
-      const r = [...fd, ...d];
-      return response.send(r);
-    });
-  });
+export const queryEvents = functions.https.onCall((data, context) => {
+  return Promise.all([fetchConnpass(), fetchDoorkeeper()]);
 });
