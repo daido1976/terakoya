@@ -24,7 +24,7 @@ export const Main = () => {
       });
   }, []);
 
-  if (!data) return <div>"Loading..."</div>;
+  if (!data.length) return <div>"Loading..."</div>;
 
   return (
     <div>
