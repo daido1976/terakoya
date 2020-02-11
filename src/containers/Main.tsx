@@ -1,27 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { List } from "../components/List";
+import firebase from "firebase";
+
+type Event = {
+  site: string;
+  title: string;
+  address: string;
+  startedAt: string;
+  eventUrl: string;
+};
+
+const firebaseConfig = {
+  apiKey: "INSERT_VALUE",
+  authDomain: "INSERT_VALUE",
+  databaseURL: "INSERT_VALUE",
+  projectId: "INSERT_VALUE"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 export const Main = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Event[]>([]);
   useEffect(() => {
-    fetch("https://api.doorkeeper.jp/events", {
-      headers: { Authorization: "Bearer MY_TOKEN" }
-    })
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        const eventData = data.map((d: any) => {
-          const event = d.event;
-          return {
-            title: event.title,
-            address: event.address,
-            startedAt: event.starts_at,
-            eventUrl: event.public_url
-          };
-        });
-        setData(eventData);
-      });
+    const queryEvents = firebase.functions().httpsCallable("queryEvents");
+    queryEvents().then(result => {
+      // WIP
+      console.log(result);
+      setData([]);
+    });
   }, []);
 
   if (!data.length) return <div>"Loading..."</div>;
