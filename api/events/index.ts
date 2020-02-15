@@ -26,8 +26,7 @@ const fetchConnpass = async (): Promise<Event[]> => {
 
 const fetchDoorkeeper = async (): Promise<Event[]> => {
   const res = await axios.get("https://api.doorkeeper.jp/events", {
-    // test token
-    headers: { Authorization: "Bearer gzTXkL-BR9xk15SwVD3w" }
+    headers: { Authorization: `Bearer ${process.env.DOORKEEPER_ACCESS_TOKEN}` }
   });
   return res.data.map((d: any) => {
     const event = d.event;

@@ -1,0 +1,5 @@
+{
+  "env": {
+    "DOORKEEPER_ACCESS_TOKEN": "@doorkeeper_access_token"
+  }
+}
