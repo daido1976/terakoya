@@ -11,12 +11,13 @@ Work in progress.
 ## Development
 
 Set environment variables to `.env` file.
+
 See. https://zeit.co/docs/v2/serverless-functions/env-and-secrets#during-local-development
 
 ```sh
 $ yarn build
 $ now dev
-# Access to http://localhost:3000/
+$ open http://localhost:3000
 ```
 
 ```sh
@@ -24,9 +25,10 @@ $ now dev
 $ yarn storybook
 ```
 
-## Deploy
+## Release
 
 Set environment variables described in `env` of `now.json` file to secrets with Now CLI.
+
 See. https://zeit.co/docs/v2/serverless-functions/env-and-secrets#adding-secrets
 
 ### Staging
