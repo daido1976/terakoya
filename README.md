@@ -2,47 +2,43 @@
 
 Work in progress.
 
+## Features
+
+- Create React App with TypeScript
+- Managed UI components with storybook
+- Deployed on [ZEIT Now](https://zeit.co/home)
+
 ## Development
 
-```sh
-# Only client
-$ yarn start
+Set environment variables to `.env` file.
 
-# Use Storybook
+See. https://zeit.co/docs/v2/serverless-functions/env-and-secrets#during-local-development
+
+```sh
+$ yarn build
+$ now dev
+$ open http://localhost:3000
+```
+
+```sh
+# Development UI
 $ yarn storybook
 ```
 
-or
+## Release
+
+Set environment variables described in `env` of `now.json` file to secrets with Now CLI.
+
+See. https://zeit.co/docs/v2/serverless-functions/env-and-secrets#adding-secrets
+
+### Staging
 
 ```sh
-$ yarn build
-# Use firebase emulator
-# See. https://firebase.google.com/docs/functions/local-emulator
-$ cd functions
-
-# if want you emulate only functions, following command execute tsc & serve
-# $ npm run serve
-
-$ npm run build
-$ cd ..
-# Emulate functions & hosting
-$ firebase emulators:start
+$ now
 ```
 
-## Deploy
-
-### Firebase Hosting
+### Production
 
 ```sh
-$ yarn build
-$ firebase deploy
-```
-
-### Cloud Functions
-
-```sh
-$ cd functions
-# If you have not installed yet
-$ npm install
-$ npm run deploy
+$ now --prod
 ```
