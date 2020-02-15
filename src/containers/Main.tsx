@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { List } from "../components/List";
+import { Event } from "../../api/events";
 
 export const Main = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Event[]>([]);
   useEffect(() => {
     fetch("https://terakoya.now.sh/api/events")
       .then(res => {
         return res.json();
       })
-      .then(data => {
+      .then((data: Event[]) => {
         setData(data);
       });
   }, []);

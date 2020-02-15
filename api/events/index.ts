@@ -1,7 +1,7 @@
 import { NowRequest, NowResponse } from "@now/node";
 import axios from "axios";
 
-type Event = {
+export type Event = {
   site: string;
   title: string;
   address: string;
