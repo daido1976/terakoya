@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { List } from "../components/List";
+import { Event } from "../../api/events";
+
+// fetch の引数の url は path だけを指定しても勝手に origin を補完してくれる
+// see. https://github.github.io/fetch/#url
+const eventsApiEndpoint = "/api/events";
 
 export const Main = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Event[]>([]);
   useEffect(() => {
-    fetch("https://api.doorkeeper.jp/events", {
-      headers: { Authorization: "Bearer MY_TOKEN" }
-    })
+    fetch(eventsApiEndpoint)
       .then(res => {
         return res.json();
       })
-      .then(data => {
-        const eventData = data.map((d: any) => {
-          const event = d.event;
-          return {
-            title: event.title,
-            address: event.address,
-            startedAt: event.starts_at,
-            eventUrl: event.public_url
-          };
-        });
-        setData(eventData);
+      .then((data: Event[]) => {
+        setData(data);
       });
   }, []);
 
