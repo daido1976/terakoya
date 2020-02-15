@@ -5,7 +5,7 @@ import { Event } from "../../api/events";
 export const Main = () => {
   const [data, setData] = useState<Event[]>([]);
   useEffect(() => {
-    fetch("https://terakoya.now.sh/api/events")
+    fetch(`${document.location.origin}/api/events`)
       .then(res => {
         return res.json();
       })
