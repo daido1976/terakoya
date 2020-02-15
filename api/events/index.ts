@@ -24,7 +24,26 @@ const fetchConnpass = async (): Promise<Event[]> => {
   });
 };
 
+const fetchDoorkeeper = async (): Promise<Event[]> => {
+  const res = await axios.get("https://api.doorkeeper.jp/events", {
+    // test token
+    headers: { Authorization: "Bearer gzTXkL-BR9xk15SwVD3w" }
+  });
+  return res.data.map((d: any) => {
+    const event = d.event;
+    return {
+      site: "doorkeeper",
+      title: event.title,
+      address: event.address,
+      startedAt: event.starts_at,
+      eventUrl: event.public_url
+    };
+  });
+};
+
 export default async (request: NowRequest, response: NowResponse) => {
-  const d = await fetchConnpass();
-  return response.status(200).send(d);
+  const connpassData = await fetchConnpass();
+  const doorkeeperData = await fetchDoorkeeper();
+  const responseData = [...connpassData, ...doorkeeperData];
+  return response.status(200).send(responseData);
 };
