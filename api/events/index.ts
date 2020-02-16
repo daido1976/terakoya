@@ -1,5 +1,6 @@
 import { NowRequest, NowResponse } from "@now/node";
 import axios from "axios";
+import { sortAscByStartedAt } from "../../src/utils/time";
 
 export type Event = {
   site: string;
@@ -43,6 +44,6 @@ const fetchDoorkeeper = async (): Promise<Event[]> => {
 export default async (request: NowRequest, response: NowResponse) => {
   const connpassData = await fetchConnpass();
   const doorkeeperData = await fetchDoorkeeper();
-  const responseData = [...connpassData, ...doorkeeperData];
+  const responseData = sortAscByStartedAt([...connpassData, ...doorkeeperData]);
   return response.status(200).send(responseData);
 };

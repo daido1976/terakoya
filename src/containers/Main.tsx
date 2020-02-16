@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { List } from "../components/List";
+import { EventList } from "../components/EventList";
 import { Event } from "../../api/events";
 
 // fetch の引数の url は path だけを指定しても勝手に origin を補完してくれる
@@ -7,22 +7,22 @@ import { Event } from "../../api/events";
 const eventsApiEndpoint = "/api/events";
 
 export const Main = () => {
-  const [data, setData] = useState<Event[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   useEffect(() => {
     fetch(eventsApiEndpoint)
       .then(res => {
         return res.json();
       })
-      .then((data: Event[]) => {
-        setData(data);
+      .then((events: Event[]) => {
+        setEvents(events);
       });
   }, []);
 
-  if (!data.length) return <div>"Loading..."</div>;
+  if (!events.length) return <div>"Loading..."</div>;
 
   return (
     <div>
-      <List data={data} />
+      <EventList events={events} />
     </div>
   );
 };
