@@ -1,6 +1,6 @@
 import { sortAscByStartedAt } from ".";
 
-describe("sortStartedAt", () => {
+describe("sortAscByStartedAt", () => {
   const events = [
     {
       site: "connpass",
