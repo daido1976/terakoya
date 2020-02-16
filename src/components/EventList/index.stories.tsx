@@ -1,8 +1,8 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { List } from ".";
+import { EventList } from ".";
 
-const data = [
+const events = [
   {
     startedAt: "13:00",
     title: "Ruby もくもく会",
@@ -17,4 +17,6 @@ const data = [
   }
 ];
 
-storiesOf("List", module).add("default", () => <List data={data}></List>);
+storiesOf("EventList", module).add("default", () => (
+  <EventList events={events}></EventList>
+));
