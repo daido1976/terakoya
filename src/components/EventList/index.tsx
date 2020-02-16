@@ -3,19 +3,19 @@ import React from "react";
 import { ListItem, Props as ListItemProps } from "../ListItem";
 
 type Props = {
-  data: ListItemProps[];
+  events: ListItemProps[];
 };
 
-export const List: React.FC<Props> = ({ data }) => {
+export const EventList: React.FC<Props> = ({ events }) => {
   return (
     <div>
-      {data.map((d, i) => (
+      {events.map((e, i) => (
         <ListItem
           key={i}
-          title={d.title}
-          address={d.address}
-          startedAt={d.startedAt}
-          eventUrl={d.eventUrl}
+          title={e.title}
+          address={e.address}
+          startedAt={e.startedAt}
+          eventUrl={e.eventUrl}
         ></ListItem>
       ))}
     </div>
