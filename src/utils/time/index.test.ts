@@ -1,4 +1,4 @@
-import { sortAscByStartedAt } from ".";
+import { sortAscByStartedAt, formatAsDate } from ".";
 
 describe("sortAscByStartedAt", () => {
   const events = [
@@ -49,7 +49,16 @@ describe("sortAscByStartedAt", () => {
     }
   ];
 
-  it("sorted ASC by startedAt", () => {
+  it("sorts ASC by startedAt", () => {
     expect(sortAscByStartedAt(events)).toEqual(results);
+  });
+});
+
+describe("formatDate", () => {
+  it("formats as a date", () => {
+    const rawValue = "2020-03-15T13:00:00+09:00";
+    const result = "2020/03/15(日)";
+
+    expect(formatAsDate(rawValue)).toBe(result);
   });
 });
