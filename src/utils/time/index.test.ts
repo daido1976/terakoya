@@ -1,4 +1,4 @@
-import { sortAscByStartedAt, formatAsDate, formatAsTime } from ".";
+import { sortAscByStartedAt, formatAsDate, formatAsTime, isSameDate } from ".";
 
 describe("sortAscByStartedAt", () => {
   const events = [
@@ -83,5 +83,21 @@ describe("formatAsTime", () => {
     const result = "09:50";
 
     expect(formatAsTime(rawValue)).toBe(result);
+  });
+});
+
+describe("isSameDate", () => {
+  it("is same", () => {
+    const a = "2020-03-15T13:00:00+09:00";
+    const b = "2020-03-15T00:50:00.000Z";
+
+    expect(isSameDate(a, b)).toBe(true);
+  });
+
+  it("is different", () => {
+    const a = "2020-03-15T13:00:00+09:00";
+    const b = "2020-03-18T00:50:00.000Z";
+
+    expect(isSameDate(a, b)).toBe(false);
   });
 });

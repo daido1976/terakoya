@@ -17,3 +17,8 @@ export const formatAsDate = (dateTime: string): string => {
 export const formatAsTime = (dateTime: string): string => {
   return dayjs(dateTime).format("HH:mm");
 };
+
+// リファクタリングの余地あり
+export const isSameDate = (a: string, b: string): boolean => {
+  return dayjs(a).format("YYYYMMDD") === dayjs(b).format("YYYYMMDD");
+};
