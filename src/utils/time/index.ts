@@ -10,10 +10,10 @@ export const sortAscByStartedAt = (events: Event[]): Event[] => {
   );
 };
 
-export const formatAsDate = (date: string): string => {
-  return dayjs(date).format("YYYY/MM/DD(ddd)");
+export const formatAsDate = (dateTime: string): string => {
+  return dayjs(dateTime).format("YYYY/MM/DD(ddd)");
 };
 
-export const formatAsTime = (date: string): string => {
-  return dayjs(date).format("HH:mm");
+export const formatAsTime = (dateTime: string): string => {
+  return dayjs(dateTime).format("HH:mm");
 };
