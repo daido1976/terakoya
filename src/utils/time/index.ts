@@ -13,3 +13,7 @@ export const sortAscByStartedAt = (events: Event[]): Event[] => {
 export const formatAsDate = (date: string): string => {
   return dayjs(date).format("YYYY/MM/DD(ddd)");
 };
+
+export const formatAsTime = (date: string): string => {
+  return dayjs(date).format("HH:mm");
+};

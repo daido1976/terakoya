@@ -1,4 +1,4 @@
-import { sortAscByStartedAt, formatAsDate } from ".";
+import { sortAscByStartedAt, formatAsDate, formatAsTime } from ".";
 
 describe("sortAscByStartedAt", () => {
   const events = [
@@ -54,7 +54,7 @@ describe("sortAscByStartedAt", () => {
   });
 });
 
-describe("formatDate", () => {
+describe("formatAsDate", () => {
   it("formats as a date for connpass", () => {
     const rawValue = "2020-03-15T13:00:00+09:00";
     const result = "2020/03/15(日)";
@@ -67,5 +67,21 @@ describe("formatDate", () => {
     const result = "2020/03/07(土)";
 
     expect(formatAsDate(rawValue)).toBe(result);
+  });
+});
+
+describe("formatAsTime", () => {
+  it("formats as a time for connpass", () => {
+    const rawValue = "2020-03-15T13:00:00+09:00";
+    const result = "13:00";
+
+    expect(formatAsTime(rawValue)).toBe(result);
+  });
+
+  it("formats as a time for doorkeeper", () => {
+    const rawValue = "2020-03-07T00:50:00.000Z";
+    const result = "09:50";
+
+    expect(formatAsTime(rawValue)).toBe(result);
   });
 });
