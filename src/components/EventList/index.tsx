@@ -1,9 +1,17 @@
 import React from "react";
 // import styles from "./index.module.scss";
-import { ListItem, Props as ListItemProps } from "../ListItem";
+import { ListItem } from "../ListItem";
+import { ListHeader } from "../ListHeader";
+
+type EventListProps = {
+  title: string;
+  address: string;
+  startedAt: string;
+  eventUrl: string;
+};
 
 type Props = {
-  events: ListItemProps[];
+  events: EventListProps[];
 };
 
 export const EventList: React.FC<Props> = ({ events }) => {
@@ -14,7 +22,7 @@ export const EventList: React.FC<Props> = ({ events }) => {
           key={i}
           title={e.title}
           address={e.address}
-          startedAt={e.startedAt}
+          startTime={e.startedAt}
           eventUrl={e.eventUrl}
         ></ListItem>
       ))}
