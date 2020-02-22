@@ -55,9 +55,16 @@ describe("sortAscByStartedAt", () => {
 });
 
 describe("formatDate", () => {
-  it("formats as a date", () => {
+  it("formats as a date for connpass", () => {
     const rawValue = "2020-03-15T13:00:00+09:00";
     const result = "2020/03/15(日)";
+
+    expect(formatAsDate(rawValue)).toBe(result);
+  });
+
+  it("formats as a date for doorkeeper", () => {
+    const rawValue = "2020-03-07T00:50:00.000Z";
+    const result = "2020/03/07(土)";
 
     expect(formatAsDate(rawValue)).toBe(result);
   });
