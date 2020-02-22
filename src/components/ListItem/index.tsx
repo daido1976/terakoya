@@ -4,14 +4,14 @@ import styles from "./index.module.scss";
 export type Props = {
   title: string;
   address: string;
-  startedAt: string;
+  startTime: string;
   eventUrl: string;
 };
 
 export const ListItem: React.FC<Props> = ({
   title,
   address,
-  startedAt,
+  startTime,
   eventUrl
 }) => {
   return (
@@ -23,7 +23,7 @@ export const ListItem: React.FC<Props> = ({
         rel="noreferrer noopener"
       >
         <div className={styles.myCard}>
-          <div className={styles.myTime}>{startedAt}</div>
+          <div className={styles.myTime}>{startTime}</div>
           <div className={styles.myBody}>
             <div className={styles.myBodyTitle}>{title}</div>
             <div className={styles.myBodyAddress}>{address}</div>
