@@ -19,13 +19,13 @@ export const EventList: React.FC<Props> = ({ events }) => {
   return (
     <div>
       {events.map((e, i) => {
-        const header =
+        const maybeHeader =
           i !== 0 && isSameDate(events[i - 1].startedAt, e.startedAt) ? null : (
             <ListHeader date={formatAsDate(e.startedAt)}></ListHeader>
           );
         return (
           <div key={i}>
-            {header}
+            {maybeHeader}
             <ListItem
               title={e.title}
               address={e.address}
