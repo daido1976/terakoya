@@ -18,19 +18,20 @@ type Props = {
 export const EventList: React.FC<Props> = ({ events }) => {
   return (
     <div>
-      {events.map((e, i) => {
+      {events.map((event, i, origEvents) => {
         const maybeHeader =
-          i !== 0 && isSameDate(events[i - 1].startedAt, e.startedAt) ? null : (
-            <ListHeader date={formatAsDate(e.startedAt)}></ListHeader>
+          i !== 0 &&
+          isSameDate(origEvents[i - 1].startedAt, event.startedAt) ? null : (
+            <ListHeader date={formatAsDate(event.startedAt)}></ListHeader>
           );
         return (
           <div key={i}>
             {maybeHeader}
             <ListItem
-              title={e.title}
-              address={e.address}
-              startTime={formatAsTime(e.startedAt)}
-              eventUrl={e.eventUrl}
+              title={event.title}
+              address={event.address}
+              startTime={formatAsTime(event.startedAt)}
+              eventUrl={event.eventUrl}
             ></ListItem>
           </div>
         );
