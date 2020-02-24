@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { EventList } from ".";
 
-const events = [
+export const events = [
   {
     startedAt: "2020-03-07T00:50:00.000Z",
     title: "JavaScript もくもく会",
