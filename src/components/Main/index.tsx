@@ -11,8 +11,12 @@ export type Props = {
 export const Main: React.FC<Props> = ({ onClick, events }) => {
   return (
     <div>
-      <Header onClick={onClick}></Header>
-      <EventList events={events}></EventList>
+      <div className={styles.myHeader}>
+        <Header onClick={onClick}></Header>
+      </div>
+      <div className={styles.myContent}>
+        <EventList events={events}></EventList>
+      </div>
     </div>
   );
 };
