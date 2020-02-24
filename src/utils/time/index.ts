@@ -18,6 +18,10 @@ export const formatAsTime = (dateTime: string): string => {
   return dayjs(dateTime).format("HH:mm");
 };
 
+export const todayKebabCase = (): string => {
+  return dayjs().format("YYYY-MM-DD");
+};
+
 // リファクタリングの余地あり
 export const isSameDate = (a: string, b: string): boolean => {
   return dayjs(a).format("YYYYMMDD") === dayjs(b).format("YYYYMMDD");
