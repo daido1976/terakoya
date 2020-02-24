@@ -1,4 +1,10 @@
-import { sortAscByStartedAt, formatAsDate, formatAsTime, isSameDate } from ".";
+import {
+  sortAscByStartedAt,
+  formatAsDate,
+  formatAsTime,
+  todayKebabCase,
+  isSameDate
+} from ".";
 
 describe("sortAscByStartedAt", () => {
   const events = [
@@ -83,6 +89,13 @@ describe("formatAsTime", () => {
     const result = "09:50";
 
     expect(formatAsTime(rawValue)).toBe(result);
+  });
+});
+
+describe("todayKebabCase", () => {
+  it("YYYY-MM-DD", () => {
+    const result = /(\d{4})-(\d{2})-(\d{2})/;
+    expect(todayKebabCase()).toMatch(result);
   });
 });
 
