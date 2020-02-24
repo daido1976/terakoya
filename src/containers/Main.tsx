@@ -5,12 +5,13 @@ import { Event } from "../../api/events";
 // fetch の引数の url は path だけを指定しても勝手に origin を補完してくれる
 // see. https://github.github.io/fetch/#url
 const eventsApiEndpoint = "/api/events";
-const onClick = () => {
-  return console.log("onClick Header Search!");
-};
 
 export const Main = () => {
   const [events, setEvents] = useState<Event[]>([]);
+  const onSearch = () => {
+    return console.log("onSearch!");
+  };
+
   useEffect(() => {
     fetch(eventsApiEndpoint)
       .then(res => {
@@ -25,7 +26,7 @@ export const Main = () => {
 
   return (
     <div>
-      <MainComponent events={events} onClick={onClick} />
+      <MainComponent events={events} onSearch={onSearch} />
     </div>
   );
 };

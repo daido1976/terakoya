@@ -4,15 +4,15 @@ import { Header } from "../Header";
 import { EventList, EventListProps } from "../EventList";
 
 export type Props = {
-  onClick: (_: any) => void;
+  onSearch: (_: any) => void;
   events: EventListProps[];
 };
 
-export const Main: React.FC<Props> = ({ onClick, events }) => {
+export const Main: React.FC<Props> = ({ onSearch, events }) => {
   return (
     <div>
       <div className={styles.myHeader}>
-        <Header onClick={onClick}></Header>
+        <Header onSearch={onSearch}></Header>
       </div>
       <div className={styles.myContent}>
         <EventList events={events}></EventList>
