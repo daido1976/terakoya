@@ -5,5 +5,5 @@ import { events } from "../EventList/index.stories";
 import { Main } from ".";
 
 storiesOf("Main", module).add("default", () => (
-  <Main onClick={action("onClick!")} events={events}></Main>
+  <Main onSearch={action("onClick!")} events={events}></Main>
 ));

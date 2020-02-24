@@ -1,0 +1,24 @@
+.my {
+  &Form {
+    width: 240px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px lightgrey;
+
+    &Button {
+      margin-top: 10px;
+      width: 200px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 1rem;
+      background-color: #0e7ac4;
+      color: #fff;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+  }
+}
