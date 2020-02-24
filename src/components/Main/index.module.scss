@@ -1,0 +1,16 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.my {
+  &Header {
+    position: fixed;
+    width: 100%;
+    padding-bottom: 12px;
+  }
+  &Content {
+    padding-top: 40px;
+    margin: 0px 20px;
+  }
+}

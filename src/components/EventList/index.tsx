@@ -4,7 +4,7 @@ import { ListItem } from "../ListItem";
 import { ListHeader } from "../ListHeader";
 import { formatAsDate, formatAsTime, isSameDate } from "../../utils/time";
 
-type EventListProps = {
+export type EventListProps = {
   title: string;
   address: string;
   startedAt: string;
