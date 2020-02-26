@@ -2,9 +2,10 @@ import React from "react";
 import styles from "./index.module.scss";
 import { Header } from "../Header";
 import { EventList, EventListProps } from "../EventList";
+import { OnSearch } from "../../containers/Main";
 
-export type Props = {
-  onSearch: (_: any) => void;
+type Props = {
+  onSearch: OnSearch;
   events: EventListProps[];
 };
 

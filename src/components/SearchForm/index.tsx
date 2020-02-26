@@ -1,29 +1,29 @@
 import React, { useReducer } from "react";
 import styles from "./index.module.scss";
 import { DatePicker } from "../DatePicker";
+import { OnSearch, SearchFormData } from "../../containers/Main";
 
-export type Props = {
-  onSearch: (_: any) => void;
+type Props = {
+  onSearch: OnSearch;
 };
 
-type State = {
-  date: string;
-};
-
-const initialState: State = {
+const initialFormData: SearchFormData = {
   date: ""
 };
 
-const reducer = (state: State, { field, value }: any) => {
+const reducer = (
+  searchFormData: SearchFormData,
+  { field, value }: { field: string; value: string }
+) => {
   return {
-    ...state,
+    ...searchFormData,
     [field]: value
   };
 };
 
 export const SearchForm: React.FC<Props> = ({ onSearch }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const onChange = (event: { target: { name: string; value: string } }) => {
+  const [searchFormData, dispatch] = useReducer(reducer, initialFormData);
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ field: event.target.name, value: event.target.value });
   };
 
@@ -33,7 +33,7 @@ export const SearchForm: React.FC<Props> = ({ onSearch }) => {
       <button
         className={styles.myFormButton}
         type="button"
-        onClick={() => onSearch(state)}
+        onClick={() => onSearch(searchFormData)}
       >
         検索する
       </button>

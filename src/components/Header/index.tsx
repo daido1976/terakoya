@@ -3,9 +3,10 @@ import styles from "./index.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { SearchForm } from "../SearchForm";
+import { OnSearch } from "../../containers/Main";
 
-export type Props = {
-  onSearch: (_: any) => void;
+type Props = {
+  onSearch: OnSearch;
 };
 
 export const Header: React.FC<Props> = ({ onSearch }) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.scss";
 
-export type Props = {
+type Props = {
   title: string;
   address: string;
   startTime: string;
