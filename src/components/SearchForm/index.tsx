@@ -1,21 +1,67 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+import React, { useReducer } from "react";
 import styles from "./index.module.scss";
 import { DatePicker } from "../DatePicker";
+import { OnSearch, SearchFormData } from "../../containers/Main";
 
-export type Props = {
-  onSearch: (_: any) => void;
+type Props = {
+  onSearch: OnSearch;
+  toggleForm?: () => void;
 };
 
-export const SearchForm: React.FC<Props> = ({ onSearch }) => {
-  const { handleSubmit, register } = useForm();
+type Action = {
+  type: "UPDATE";
+  payload: {
+    field: string;
+    value: string;
+  };
+};
+
+const initialFormData: SearchFormData = {
+  date: ""
+};
+
+const reducer = (prevFormData: SearchFormData, action: Action) => {
+  switch (action.type) {
+    case "UPDATE": {
+      const { payload } = action;
+      return {
+        ...prevFormData,
+        [payload.field]: payload.value
+      };
+    }
+    default:
+      return prevFormData;
+  }
+};
+
+export const SearchForm: React.FC<Props> = ({
+  onSearch,
+  toggleForm = () => {}
+}) => {
+  const [searchFormData, dispatch] = useReducer(reducer, initialFormData);
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: "UPDATE",
+      payload: {
+        field: event.target.name,
+        value: event.target.value
+      }
+    });
+  };
 
   return (
-    <div>
-      <form className={styles.myForm} onSubmit={handleSubmit(onSearch)}>
-        <DatePicker onChange={() => {}} register={register}></DatePicker>
-        <input className={styles.myFormButton} type="submit" value="検索する" />
-      </form>
+    <div className={styles.myForm}>
+      <DatePicker onChange={onChange}></DatePicker>
+      <button
+        className={styles.myFormButton}
+        type="button"
+        onClick={() => {
+          onSearch(searchFormData);
+          toggleForm();
+        }}
+      >
+        検索する
+      </button>
     </div>
   );
 };
