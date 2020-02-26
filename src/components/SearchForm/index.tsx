@@ -13,11 +13,11 @@ const initialFormData: SearchFormData = {
 };
 
 const reducer = (
-  searchFormData: SearchFormData,
+  prevFormData: SearchFormData,
   { field, value }: { field: string; value: string }
 ) => {
   return {
-    ...searchFormData,
+    ...prevFormData,
     [field]: value
   };
 };
