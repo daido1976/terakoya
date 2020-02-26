@@ -5,6 +5,7 @@ import { OnSearch, SearchFormData } from "../../containers/Main";
 
 type Props = {
   onSearch: OnSearch;
+  toggleForm?: () => void;
 };
 
 const initialFormData: SearchFormData = {
@@ -21,7 +22,10 @@ const reducer = (
   };
 };
 
-export const SearchForm: React.FC<Props> = ({ onSearch }) => {
+export const SearchForm: React.FC<Props> = ({
+  onSearch,
+  toggleForm = () => {}
+}) => {
   const [searchFormData, dispatch] = useReducer(reducer, initialFormData);
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ field: event.target.name, value: event.target.value });
@@ -33,7 +37,10 @@ export const SearchForm: React.FC<Props> = ({ onSearch }) => {
       <button
         className={styles.myFormButton}
         type="button"
-        onClick={() => onSearch(searchFormData)}
+        onClick={() => {
+          onSearch(searchFormData);
+          toggleForm();
+        }}
       >
         検索する
       </button>
