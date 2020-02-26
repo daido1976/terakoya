@@ -8,8 +8,8 @@ const eventsApiEndpoint = "/api/events";
 
 export const Main = () => {
   const [events, setEvents] = useState<Event[]>([]);
-  const onSearch = () => {
-    return console.log("onSearch!");
+  const onSearch = (data: any) => {
+    return console.log(data);
   };
 
   useEffect(() => {
