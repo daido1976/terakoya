@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import styles from "./index.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { SearchForm } from "../SearchForm";
 
 export type Props = {
-  searchForm: React.FunctionComponentElement<any>;
+  onSearch: (_: any) => void;
 };
 
-export const Header: React.FC<Props> = ({ searchForm }) => {
+export const Header: React.FC<Props> = ({ onSearch }) => {
   const [showForm, onToggle] = useState(false);
 
   return (
@@ -21,7 +22,9 @@ export const Header: React.FC<Props> = ({ searchForm }) => {
           <FontAwesomeIcon icon={faSearch} />
         </div>
       </div>
-      <div className={styles.myForm}>{showForm ? searchForm : null}</div>
+      <div className={styles.myForm}>
+        {showForm ? <SearchForm onSearch={onSearch}></SearchForm> : null}
+      </div>
     </div>
   );
 };
