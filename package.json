@@ -17,6 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "type": "tsc --noEmit --project tsconfig.json",
     "test": "react-scripts test",
     "test:no-watch": "react-scripts test --watchAll=false",
     "test:ci": "CI=true react-scripts test",
