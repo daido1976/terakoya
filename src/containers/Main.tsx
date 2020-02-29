@@ -16,6 +16,7 @@ export const Main = () => {
   const onSearch: OnSearch = data => {
     return console.log(data);
   };
+  const spinner = <div>"Loading..."</div>;
 
   useEffect(() => {
     fetch(eventsApiEndpoint)
@@ -27,7 +28,7 @@ export const Main = () => {
       });
   }, []);
 
-  if (!events.length) return <div>"Loading..."</div>;
+  if (!events.length) return spinner;
 
   return (
     <div>
