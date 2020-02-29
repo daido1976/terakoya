@@ -11,6 +11,7 @@ export type OnSearch = (data: SearchFormData) => void;
 // see. https://github.github.io/fetch/#url
 const eventsApiEndpoint = "/api/events";
 
+// TODO: custom hook に切り出す
 export const Main = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [query, setQuery] = useState<string>("");

@@ -12,6 +12,7 @@ export type Event = {
 
 const fetchConnpass = async (query: any): Promise<Event[]> => {
   const { date = todayKebabCase() } = query;
+  // TODO: 抽象化する
   const dateRemovedHyphens = date.replace(/-/g, "");
   console.log("dateConnpass", dateRemovedHyphens);
   const res = await axios.get(
@@ -52,6 +53,7 @@ const fetchDoorkeeper = async (query: any): Promise<Event[]> => {
 };
 
 export default async (request: NowRequest, response: NowResponse) => {
+  // TODO: 初回 query が undefined の時の処理考える
   console.log(request.query);
   const { query } = request;
   const connpassData = await fetchConnpass(query);
