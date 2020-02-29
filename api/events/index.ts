@@ -42,6 +42,7 @@ const fetchDoorkeeper = async (): Promise<Event[]> => {
 };
 
 export default async (request: NowRequest, response: NowResponse) => {
+  console.log(request.query);
   const connpassData = await fetchConnpass();
   const doorkeeperData = await fetchDoorkeeper();
   const responseData = sortAscByStartedAt([...connpassData, ...doorkeeperData]);

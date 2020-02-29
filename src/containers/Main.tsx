@@ -19,13 +19,12 @@ export const Main = () => {
   const spinner = <div>Loading...</div>;
 
   useEffect(() => {
-    fetch(eventsApiEndpoint)
-      .then(res => {
-        return res.json();
-      })
-      .then((events: Event[]) => {
-        setEvents(events);
-      });
+    const fetchData = async () => {
+      const res = await fetch(eventsApiEndpoint);
+      const events: Event[] = await res.json();
+      setEvents(events);
+    };
+    fetchData();
   }, []);
 
   if (!events.length) return spinner;
