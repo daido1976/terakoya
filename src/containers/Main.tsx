@@ -32,7 +32,7 @@ export const Main = () => {
 
   return (
     <div>
-      <MainComponent events={events} onSearch={onSearch} />
+      <MainComponent events={events} onSearch={onSearch} loading={false} />
     </div>
   );
 };
