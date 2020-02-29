@@ -14,26 +14,26 @@ const eventsApiEndpoint = "/api/events";
 export const Main = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [query, setQuery] = useState<string>("");
+  const [loading, setLoading] = useState(false);
 
   const onSearch: OnSearch = data => {
     setQuery(`date=${data.date}`);
   };
-  const spinner = <div>Loading...</div>;
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       const res = await fetch(`${eventsApiEndpoint}?${query}`);
       const events: Event[] = await res.json();
       setEvents(events);
+      setLoading(false);
     };
     fetchData();
   }, [query]);
 
-  if (!events.length) return spinner;
-
   return (
     <div>
-      <MainComponent events={events} onSearch={onSearch} loading={false} />
+      <MainComponent events={events} onSearch={onSearch} loading={loading} />
     </div>
   );
 };
