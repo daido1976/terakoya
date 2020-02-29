@@ -14,7 +14,7 @@
     "react-scripts": "3.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts build && now dev --debug",
     "build": "react-scripts build",
     "type": "tsc --noEmit --project tsconfig.json",
     "test": "react-scripts test",
