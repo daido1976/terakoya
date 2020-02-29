@@ -11,28 +11,30 @@ export type OnSearch = (data: SearchFormData) => void;
 // see. https://github.github.io/fetch/#url
 const eventsApiEndpoint = "/api/events";
 
+// TODO: custom hook に切り出す
 export const Main = () => {
   const [events, setEvents] = useState<Event[]>([]);
+  const [query, setQuery] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+
   const onSearch: OnSearch = data => {
-    return console.log(data);
+    setQuery(`date=${data.date}`);
   };
-  const spinner = <div>"Loading..."</div>;
 
   useEffect(() => {
-    fetch(eventsApiEndpoint)
-      .then(res => {
-        return res.json();
-      })
-      .then((events: Event[]) => {
-        setEvents(events);
-      });
-  }, []);
-
-  if (!events.length) return spinner;
+    const fetchData = async () => {
+      setLoading(true);
+      const res = await fetch(`${eventsApiEndpoint}?${query}`);
+      const events: Event[] = await res.json();
+      setEvents(events);
+      setLoading(false);
+    };
+    fetchData();
+  }, [query]);
 
   return (
     <div>
-      <MainComponent events={events} onSearch={onSearch} />
+      <MainComponent events={events} onSearch={onSearch} loading={loading} />
     </div>
   );
 };

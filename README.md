@@ -15,8 +15,7 @@ Set environment variables to `.env` file.
 See. https://zeit.co/docs/v2/serverless-functions/env-and-secrets#during-local-development
 
 ```sh
-$ yarn build
-$ now dev
+$ yarn start
 $ open http://localhost:3000
 ```
 
