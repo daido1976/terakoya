@@ -3,10 +3,11 @@ import styles from "./index.module.scss";
 
 type Props = {
   onChange: (_: any) => void;
+  value?: string;
   min?: string;
 };
 
-export const DatePicker: React.FC<Props> = ({ onChange, min }) => {
+export const DatePicker: React.FC<Props> = ({ onChange, value, min }) => {
   return (
     <div className={styles.myForm}>
       開催日{" "}
@@ -15,6 +16,7 @@ export const DatePicker: React.FC<Props> = ({ onChange, min }) => {
         type="date"
         name="date"
         onChange={onChange}
+        value={value}
         min={min}
       />
     </div>

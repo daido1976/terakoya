@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import styles from "./index.module.scss";
 import { DatePicker } from "../DatePicker";
 import { OnSearch, SearchFormData } from "../../containers/Main";
+import { todayKebabCase } from "../../utils/time";
 
 type Props = {
   onSearch: OnSearch;
@@ -17,7 +18,7 @@ type Action = {
 };
 
 const initialFormData: SearchFormData = {
-  date: ""
+  date: todayKebabCase()
 };
 
 const reducer = (prevFormData: SearchFormData, action: Action) => {
@@ -51,7 +52,11 @@ export const SearchForm: React.FC<Props> = ({
 
   return (
     <div className={styles.myForm}>
-      <DatePicker onChange={onChange}></DatePicker>
+      <DatePicker
+        onChange={onChange}
+        value={searchFormData.date}
+        min={todayKebabCase()}
+      ></DatePicker>
       <button
         className={styles.myFormButton}
         type="button"
