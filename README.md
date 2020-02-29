@@ -10,7 +10,7 @@ Work in progress.
 
 ## Development
 
-Set environment variables to `.env` file. (Refer to `.env.skeleton` file)
+Set environment variables to `.env` file. ( Please refer to `.env.skeleton` file. )
 
 See. https://zeit.co/docs/v2/serverless-functions/env-and-secrets#during-local-development
 
