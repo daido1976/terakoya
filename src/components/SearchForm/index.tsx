@@ -7,6 +7,7 @@ import { todayKebabCase } from "../../utils/time";
 type Props = {
   onSearch: OnSearch;
   toggleForm?: () => void;
+  initialSearchValues?: any;
 };
 
 type Action = {
@@ -15,10 +16,6 @@ type Action = {
     field: string;
     value: string;
   };
-};
-
-const initialFormData: SearchFormData = {
-  date: todayKebabCase()
 };
 
 const reducer = (prevFormData: SearchFormData, action: Action) => {
@@ -37,8 +34,14 @@ const reducer = (prevFormData: SearchFormData, action: Action) => {
 
 export const SearchForm: React.FC<Props> = ({
   onSearch,
-  toggleForm = () => {}
+  toggleForm = () => {},
+  initialSearchValues = { date: todayKebabCase() }
 }) => {
+  const { date } = initialSearchValues;
+  const initialFormData: SearchFormData = {
+    date
+  };
+
   const [searchFormData, dispatch] = useReducer(reducer, initialFormData);
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({

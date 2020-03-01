@@ -12,10 +12,14 @@ export const Header = () => {
   const onSearch: OnSearch = data => {
     router.history.push({ search: `?date=${data.date}` });
   };
+  const initialSearchValues = router.query;
 
   return (
     <div>
-      <HeaderComponent onSearch={onSearch} />
+      <HeaderComponent
+        onSearch={onSearch}
+        initialSearchValues={initialSearchValues}
+      />
     </div>
   );
 };

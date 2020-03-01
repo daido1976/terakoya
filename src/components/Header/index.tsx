@@ -7,9 +7,10 @@ import { OnSearch } from "../../containers/Header";
 
 type Props = {
   onSearch: OnSearch;
+  initialSearchValues?: any;
 };
 
-export const Header: React.FC<Props> = ({ onSearch }) => {
+export const Header: React.FC<Props> = ({ onSearch, initialSearchValues }) => {
   const [showForm, onToggle] = useState(false);
   const toggleForm = () => {
     onToggle(prev => (prev ? false : true));
@@ -25,7 +26,11 @@ export const Header: React.FC<Props> = ({ onSearch }) => {
       </div>
       <div className={styles.myForm}>
         {showForm ? (
-          <SearchForm onSearch={onSearch} toggleForm={toggleForm}></SearchForm>
+          <SearchForm
+            onSearch={onSearch}
+            toggleForm={toggleForm}
+            initialSearchValues={initialSearchValues}
+          ></SearchForm>
         ) : null}
       </div>
     </div>
