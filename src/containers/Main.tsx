@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "../hooks/useRouter";
 import { Main as MainComponent } from "../components/Main";
 import { Event } from "../../api/events";
 
@@ -14,23 +15,23 @@ const eventsApiEndpoint = "/api/events";
 // TODO: custom hook に切り出す
 export const Main = () => {
   const [events, setEvents] = useState<Event[]>([]);
-  const [query, setQuery] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const onSearch: OnSearch = data => {
-    setQuery(`date=${data.date}`);
+    router.history.push({ search: `?date=${data.date}` });
   };
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const res = await fetch(`${eventsApiEndpoint}?${query}`);
+      const res = await fetch(`${eventsApiEndpoint}${router.location.search}`);
       const events: Event[] = await res.json();
       setEvents(events);
       setLoading(false);
     };
     fetchData();
-  }, [query]);
+  }, [router.location.search]);
 
   return (
     <div>
