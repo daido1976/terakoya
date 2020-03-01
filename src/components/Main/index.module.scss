@@ -1,13 +1,13 @@
 .my {
-  // TODO: このレイアウトのためのスタイルは Layout に持っていきたい
   &Content {
-    padding-top: 60px;
     margin: 0px 20px;
   }
   &Spinner {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // margin, padding 関係なく親要素の真ん中に配置したいのでこうしている
+    // ref. https://saruwakakun.com/html-css/basic/centering#section3
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
