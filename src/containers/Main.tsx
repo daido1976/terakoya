@@ -14,18 +14,17 @@ const eventsApiEndpoint = "/api/events";
 // TODO: custom hook に切り出す
 export const Main = () => {
   const [events, setEvents] = useState<Event[]>([]);
-  const [query, setQuery] = useState<string>(window.location.search);
+  const [query, setQuery] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
   const onSearch: OnSearch = data => {
-    window.location.search = `date=${data.date}`;
-    setQuery(window.location.search);
+    setQuery(`date=${data.date}`);
   };
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const res = await fetch(`${eventsApiEndpoint}${query}`);
+      const res = await fetch(`${eventsApiEndpoint}?${query}`);
       const events: Event[] = await res.json();
       setEvents(events);
       setLoading(false);
