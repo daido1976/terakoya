@@ -1,8 +1,11 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
+import { SearchForm } from "../SearchForm";
+import { props as searchFormProps } from "../SearchForm/index.stories";
 import { Header } from ".";
 
-storiesOf("Header", module).add("default", () => (
-  <Header onSearch={action("onClick!")}></Header>
-));
+export const props = {
+  searchForm: <SearchForm {...searchFormProps}></SearchForm>
+};
+
+storiesOf("Header", module).add("default", () => <Header {...props}></Header>);

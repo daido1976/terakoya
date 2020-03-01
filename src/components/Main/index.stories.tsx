@@ -1,21 +1,22 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 import { events } from "../EventList/index.stories";
 import { Main } from ".";
 
+export const props = {
+  events,
+  loading: false
+};
+
+export const loadingProps = {
+  events,
+  loading: true
+};
+
 storiesOf("Main", module)
   .add("default", () => {
-    return (
-      <Main
-        onSearch={action("onClick!")}
-        events={events}
-        loading={false}
-      ></Main>
-    );
+    return <Main {...props}></Main>;
   })
   .add("loading", () => {
-    return (
-      <Main onSearch={action("onClick!")} events={events} loading={true}></Main>
-    );
+    return <Main {...loadingProps}></Main>;
   });

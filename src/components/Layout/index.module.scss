@@ -1,0 +1,14 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.my {
+  &Header {
+    position: fixed;
+    width: 100%;
+  }
+  &Main {
+    padding-top: 60px;
+  }
+}
