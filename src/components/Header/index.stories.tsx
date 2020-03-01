@@ -3,6 +3,8 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { Header } from ".";
 
-storiesOf("Header", module).add("default", () => (
-  <Header onSearch={action("onClick!")}></Header>
-));
+export const props = {
+  onSearch: action("onClick!")
+};
+
+storiesOf("Header", module).add("default", () => <Header {...props}></Header>);

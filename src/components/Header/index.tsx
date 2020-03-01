@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { SearchForm } from "../SearchForm";
-import { OnSearch } from "../../containers/Main";
+import { OnSearch } from "../../containers/Header";
 
 type Props = {
   onSearch: OnSearch;

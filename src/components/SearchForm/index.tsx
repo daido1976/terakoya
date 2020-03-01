@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import styles from "./index.module.scss";
 import { DatePicker } from "../DatePicker";
-import { OnSearch, SearchFormData } from "../../containers/Main";
+import { OnSearch, SearchFormData } from "../../containers/Header";
 import { todayKebabCase } from "../../utils/time";
 
 type Props = {

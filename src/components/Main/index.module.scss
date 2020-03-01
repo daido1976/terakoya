@@ -1,13 +1,5 @@
-* {
-  margin: 0px;
-  padding: 0px;
-}
-
 .my {
-  &Header {
-    position: fixed;
-    width: 100%;
-  }
+  // TODO: このレイアウトのためのスタイルは Layout に持っていきたい
   &Content {
     padding-top: 60px;
     margin: 0px 20px;
