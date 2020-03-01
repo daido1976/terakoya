@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import styles from "./index.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { SearchForm } from "../SearchForm";
-import { OnSearch } from "../../containers/Header";
 
 type Props = {
-  onSearch: OnSearch;
-  initialSearchValues?: any;
+  searchForm: React.FunctionComponentElement<any>;
 };
 
-export const Header: React.FC<Props> = ({ onSearch, initialSearchValues }) => {
+export const SearchFormToggleContext = React.createContext(() => {});
+
+export const Header: React.FC<Props> = ({ searchForm }) => {
   const [showForm, onToggle] = useState(false);
   const toggleForm = () => {
-    onToggle(prev => (prev ? false : true));
+    onToggle(!showForm);
   };
 
   return (
@@ -26,11 +25,9 @@ export const Header: React.FC<Props> = ({ onSearch, initialSearchValues }) => {
       </div>
       <div className={styles.myForm}>
         {showForm ? (
-          <SearchForm
-            onSearch={onSearch}
-            toggleForm={toggleForm}
-            initialSearchValues={initialSearchValues}
-          ></SearchForm>
+          <SearchFormToggleContext.Provider value={toggleForm}>
+            {searchForm}
+          </SearchFormToggleContext.Provider>
         ) : null}
       </div>
     </div>

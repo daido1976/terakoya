@@ -1,48 +1,19 @@
-import React, { useReducer } from "react";
+import React, { useContext } from "react";
+import { useSearchForm, SearchFormData } from "../../hooks/useSearchForm";
 import styles from "./index.module.scss";
 import { DatePicker } from "../DatePicker";
-import { OnSearch, SearchFormData } from "../../containers/Header";
+import { SearchFormToggleContext } from "../Header";
+import { OnSearch } from "../../containers/Header";
 import { todayKebabCase } from "../../utils/time";
 
 type Props = {
   onSearch: OnSearch;
-  toggleForm?: () => void;
-  initialSearchValues?: any;
+  initialValues: SearchFormData;
 };
 
-type Action = {
-  type: "UPDATE";
-  payload: {
-    field: string;
-    value: string;
-  };
-};
-
-const reducer = (prevFormData: SearchFormData, action: Action) => {
-  switch (action.type) {
-    case "UPDATE": {
-      const { payload } = action;
-      return {
-        ...prevFormData,
-        [payload.field]: payload.value
-      };
-    }
-    default:
-      return prevFormData;
-  }
-};
-
-export const SearchForm: React.FC<Props> = ({
-  onSearch,
-  toggleForm = () => {},
-  initialSearchValues = { date: todayKebabCase() }
-}) => {
-  const { date } = initialSearchValues;
-  const initialFormData: SearchFormData = {
-    date
-  };
-
-  const [searchFormData, dispatch] = useReducer(reducer, initialFormData);
+export const SearchForm: React.FC<Props> = ({ onSearch, initialValues }) => {
+  const toggleForm = useContext(SearchFormToggleContext);
+  const [searchFormData, dispatch] = useSearchForm(initialValues);
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: "UPDATE",
