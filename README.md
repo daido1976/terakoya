@@ -1,7 +1,5 @@
 # terakoya ![Client test](https://github.com/daido1976/terakoya/workflows/Client%20test/badge.svg)
 
-Work in progress.
-
 ## Features
 
 - Create React App with TypeScript
