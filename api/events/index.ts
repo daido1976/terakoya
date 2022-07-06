@@ -1,4 +1,4 @@
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import axios from "axios";
 import { sortAscByStartedAt, todayKebabCase } from "../../src/utils/time";
 
@@ -24,7 +24,7 @@ const fetchConnpass = async (query: any): Promise<Event[]> => {
       title: d.title,
       address: d.address,
       startedAt: d.started_at,
-      eventUrl: d.event_url
+      eventUrl: d.event_url,
     };
   });
 };
@@ -36,8 +36,8 @@ const fetchDoorkeeper = async (query: any): Promise<Event[]> => {
     `https://api.doorkeeper.jp/events?since=${date}`,
     {
       headers: {
-        Authorization: `Bearer ${process.env.DOORKEEPER_ACCESS_TOKEN}`
-      }
+        Authorization: `Bearer ${process.env.DOORKEEPER_ACCESS_TOKEN}`,
+      },
     }
   );
   return res.data.map((d: any) => {
@@ -47,12 +47,12 @@ const fetchDoorkeeper = async (query: any): Promise<Event[]> => {
       title: event.title,
       address: event.address,
       startedAt: event.starts_at,
-      eventUrl: event.public_url
+      eventUrl: event.public_url,
     };
   });
 };
 
-export default async (request: NowRequest, response: NowResponse) => {
+export default async (request: VercelRequest, response: VercelResponse) => {
   // TODO: 初回 query が undefined の時の処理考える
   console.log(request.query);
   const { query } = request;
