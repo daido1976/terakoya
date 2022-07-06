@@ -1,8 +1,12 @@
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 import { Event } from "../../../api/events";
 
 dayjs.locale("ja");
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 export const sortAscByStartedAt = (events: Event[]): Event[] => {
   return events.sort(
@@ -19,7 +23,7 @@ export const formatAsTime = (dateTime: string): string => {
 };
 
 export const todayKebabCase = (): string => {
-  return dayjs().format("YYYY-MM-DD");
+  return dayjs().tz("Asia/Tokyo").format("YYYY-MM-DD");
 };
 
 // リファクタリングの余地あり
