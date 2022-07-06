@@ -9,13 +9,13 @@ export type OnSearch = (data: SearchFormData) => void;
 
 export const Header = () => {
   const router = useRouter();
-  const onSearch: OnSearch = data => {
-    router.history.push({ search: `?date=${data.date}` });
+  const onSearch: OnSearch = (data) => {
+    router.navigate({ search: `?date=${data.date}` });
   };
 
   const query: any = router.query;
   const initialFormData: SearchFormData = {
-    date: query.date || todayKebabCase()
+    date: query.date || todayKebabCase(),
   };
 
   const searchForm = (
