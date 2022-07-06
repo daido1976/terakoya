@@ -1,16 +1,18 @@
-# terakoya ![Client test](https://github.com/daido1976/terakoya/workflows/Client%20test/badge.svg)
+# terakoya
+
+![Client test](https://github.com/daido1976/terakoya/workflows/Client%20test/badge.svg)
 
 ## Features
 
 - Create React App with TypeScript
 - Managed UI components with storybook
-- Deployed on [ZEIT Now](https://zeit.co/home)
+- Deployed on [Vercel](https://vercel.com/home)
 
 ## Development
 
 Set environment variables to `.env` file. (Refer to `.env.skeleton`)
 
-See. https://zeit.co/docs/v2/serverless-functions/env-and-secrets#during-local-development
+See. https://vercel.com/docs/concepts/projects/environment-variables#development-environment-variables
 
 ```sh
 $ yarn start
@@ -24,18 +26,18 @@ $ yarn storybook
 
 ## Release
 
-Set environment variables described in `env` of `now.json` file to secrets with Now CLI.
+Set environment variables described in `env` of `vercel.json` file to secrets with Vercel CLI.
 
-See. https://zeit.co/docs/v2/serverless-functions/env-and-secrets#adding-secrets
+See. https://vercel.com/docs/concepts/projects/environment-variables#adding-secrets
 
 ### Staging
 
 ```sh
-$ now
+$ vercel
 ```
 
 ### Production
 
 ```sh
-$ now --prod
+$ vercel --prod
 ```

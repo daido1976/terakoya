@@ -1,30 +1,21 @@
 import { useMemo } from "react";
-import {
-  useParams,
-  useLocation,
-  useHistory,
-  useRouteMatch
-} from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import queryString from "query-string";
 
 export const useRouter = () => {
   const params = useParams();
   const location = useLocation();
-  const history = useHistory();
-  const match = useRouteMatch();
+  const navigate = useNavigate();
 
   return useMemo(() => {
     return {
-      push: history.push,
-      replace: history.replace,
       pathname: location.pathname,
       query: {
         ...queryString.parse(location.search),
-        ...params
+        ...params,
       },
-      match,
       location,
-      history
+      navigate,
     };
-  }, [params, match, location, history]);
+  }, [params, location, navigate]);
 };
